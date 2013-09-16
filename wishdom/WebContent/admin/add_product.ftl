@@ -58,7 +58,7 @@
     function setContent() {
         var arr = [];
         arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor');
+        UE.getEditor('editor').setContent('欢迎使用后台管理系统');
         alert(arr.join("\n"));
     }
     function setDisabled() {
