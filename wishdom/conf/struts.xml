@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="index" namespace="/" extends="struts-default">
+		<action name="index" class="com.elink.action.mainAction" method="indexAction">
+			<result name="success" type="freemarker">/main.ftl</result>
+		</action>
+	</package>
+	
+	<package name="admin" namespace="/admin" extends="struts-default">
+		<action name="index" class="com.elink.action.adminAction" method="loginAction">
+			<result name="success" type="freemarker">/include/admin-left.ftl</result>
+		</action>
+		<action name="list_*" class="com.elink.action.adminAction" method="list_{1}">
+			<result name="success" type="freemarker">/admin/productlist.ftl</result>
+			<result name="perssion" type="freemarker"></result>
+		</action>
+		<action name="add_*" class="com.elink.action.adminAction" method="add_{1}">
+			<result name="success" type="freemarker">/admin/add_{1}.ftl</result>
+			<result name="perssion" type="freemarker"></result>
+		</action>
+		<action name="upload_*" class="com.elink.action.adminAction" method="upload_{1}">
+			<result name="null"></result>
+		</action>
+	</package>
+</struts>
