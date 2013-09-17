@@ -20,8 +20,8 @@
 		<action name="custmode" class="com.elink.action.mainAction" method="custMode">
 			<result name="success" type="freemarker">/front/custmode.ftl</result>
 		</action>
-		<action name="zzgy" class="com.elink.action.mainAction" method="custMode">
-			<result name="success" type="freemarker">/front/custmode.ftl</result>
+		<action name="zzgy" class="com.elink.action.mainAction" method="zzgy">
+			<result name="success" type="freemarker">/front/zzgy.ftl</result>
 		</action>
 	</package> 
 	<package name="admin" namespace="/admin" extends="struts-default">
