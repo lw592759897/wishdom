@@ -120,9 +120,9 @@
         return win;
     }
     var links = [
-            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/add_product.action' },
+            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/add_product.htm' },
             { icon: 'images/3DSMAX.png', title: '产品列表', url: '../grid/treegrid/treegrid.htm' },
-            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/add_news.action' },
+            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/add_news.htm' },
             { icon: 'images/Program Files Folder.png', title: '修改大师', url: '../grid/frozen/frozengrid.htm' },
             { icon: 'images/Program Files Folder.png', title: '首页艺术品显示', url: '../base/drag.htm' },
             { icon: 'images/Alien Folder.png', title: '首页大图修改', url: '../tree/draggable.htm' },

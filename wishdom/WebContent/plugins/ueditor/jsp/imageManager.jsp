@@ -7,7 +7,7 @@
     //仅做示例用，请自行修改
 	String path = "upload";
 	String imgStr ="";
-	String realpath = getRealPath(request,path)+"/"+path;
+	String realpath = "D:/upload";
 	List<File> files = getFiles(realpath,new ArrayList());
 	for(File file :files ){
 		imgStr+=file.getPath().replace(getRealPath(request,path),"")+"ue_separate_ue";

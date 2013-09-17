@@ -3,6 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	<constant name="struts.action.extension" value="action,htm,," /> 
 	<package name="index" namespace="/" extends="struts-default">
 		<action name="index" class="com.elink.action.mainAction" method="indexAction">
 			<result name="success" type="freemarker">/main.ftl</result>
@@ -15,7 +16,7 @@
 		</action>
 		<action name="list_*" class="com.elink.action.adminAction" method="list_{1}">
 			<result name="success" type="freemarker">/admin/productlist.ftl</result>
-			<result name="perssion" type="freemarker"></result>l
+			<result name="perssion" type="freemarker"></result>
 		</action>
 		<action name="add_*" class="com.elink.action.adminAction" method="add_{1}">
 			<result name="success" type="freemarker">/admin/add_{1}.ftl</result>

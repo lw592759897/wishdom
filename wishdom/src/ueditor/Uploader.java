@@ -77,7 +77,6 @@ public class Uploader {
 		upload.setSizeMax(10000 * 1024);
 		upload.setHeaderEncoding("utf-8");
 		FileItemIterator fii = upload.getItemIterator(request);
-		
 			while (fii.hasNext()) {
 				FileItemStream fis = fii.next();
 				if (!fis.isFormField()) {
@@ -90,7 +89,7 @@ public class Uploader {
 					this.type = this.getFileExt(this.fileName);
 					this.url = savePath + "/" + this.fileName;
 					BufferedInputStream in = new BufferedInputStream(fis.openStream());
-					FileOutputStream out = new FileOutputStream(new File(this.getPhysicalPath(this.url)));
+					FileOutputStream out = new FileOutputStream(new File(this.url));
 					BufferedOutputStream output = new BufferedOutputStream(out);
 					Streams.copy(in, output, true);
 					this.state=this.errorInfo.get("SUCCESS");
