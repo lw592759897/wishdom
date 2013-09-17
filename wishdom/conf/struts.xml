@@ -8,8 +8,22 @@
 		<action name="index" class="com.elink.action.mainAction" method="indexAction">
 			<result name="success" type="freemarker">/main.ftl</result>
 		</action>
-	</package>
-	
+		<action name="cominfo" class="com.elink.action.mainAction" method="cominfo">
+			<result name="success" type="freemarker">/front/companyInfo.ftl</result>
+		</action>
+		<action name="pdshow" class="com.elink.action.mainAction" method="pdshow">
+			<result name="success" type="freemarker">/front/productList.ftl</result>
+		</action>
+		<action name="gjds" class="com.elink.action.mainAction" method="chzDashi">
+			<result name="success" type="freemarker">/front/gjds.ftl</result>
+		</action>
+		<action name="custmode" class="com.elink.action.mainAction" method="custMode">
+			<result name="success" type="freemarker">/front/custmode.ftl</result>
+		</action>
+		<action name="zzgy" class="com.elink.action.mainAction" method="custMode">
+			<result name="success" type="freemarker">/front/custmode.ftl</result>
+		</action>
+	</package> 
 	<package name="admin" namespace="/admin" extends="struts-default">
 		<action name="index" class="com.elink.action.adminAction" method="loginAction">
 			<result name="success" type="freemarker">/include/admin-left.ftl</result>
