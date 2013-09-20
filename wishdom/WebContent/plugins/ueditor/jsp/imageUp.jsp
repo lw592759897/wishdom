@@ -11,5 +11,5 @@
 	up.setAllowFiles(fileType);
 	up.setMaxSize(10000); //单位KB
 	up.upload();
-	response.getWriter().print("{'original':'"+up.getOriginalName()+"','url':'"+up.getUrl()+"','title':'"+up.getTitle()+"','state':'"+up.getState()+"'}");
+	response.getWriter().print("{'original':'"+up.getOriginalName()+"','url':'"+request.getContextPath()+"/"+up.getUrl()+"','title':'"+up.getTitle()+"','state':'"+up.getState()+"'}");
 %>

@@ -1,4 +1,4 @@
-﻿<jsp:include page="include/mainhead.jsp"></jsp:include>
+﻿<#include "include/mainhead.ftl">
 <script>
 window.onload=function(){
 	function $(id){return document.getElementById(id);};
@@ -137,4 +137,4 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
     </div>
 </div>
 <!-- news over -->
-<jsp:include page="include/foot.jsp"></jsp:include>
+<#include "include/foot.ftl">

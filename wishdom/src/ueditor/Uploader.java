@@ -89,7 +89,7 @@ public class Uploader {
 					this.type = this.getFileExt(this.fileName);
 					this.url = savePath + "/" + this.fileName;
 					BufferedInputStream in = new BufferedInputStream(fis.openStream());
-					FileOutputStream out = new FileOutputStream(new File(this.url));
+					FileOutputStream out = new FileOutputStream(new File(this.getPhysicalPath(this.url)));
 					BufferedOutputStream output = new BufferedOutputStream(out);
 					Streams.copy(in, output, true);
 					this.state=this.errorInfo.get("SUCCESS");

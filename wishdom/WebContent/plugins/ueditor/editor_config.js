@@ -126,7 +126,7 @@
 
 
     })();
-
+    
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
@@ -137,7 +137,7 @@
         
         //图片上传配置区
         ,imageUrl:URL+"jsp/imageUp.jsp"             //图片上传提交地址
-        ,imagePath:"http://localhost:8080/wishdom/admin/upload/"                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
+        ,imagePath:""                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
         //,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
         //,compressSide:0                            //等比压缩的基准，确定maxImageSideLength参数的参照对象。0为按照最长边，1为按照宽度，2为按照高度
         //,maxImageSideLength:900                    //上传图片最大允许的边长，超过会自动等比缩放,不缩放就设置一个比较大的值，更多设置在image.html中
@@ -161,7 +161,7 @@
 
         //图片在线管理配置区
         ,imageManagerUrl:URL + "jsp/imageManager.jsp"       //图片在线管理的处理地址
-        ,imageManagerPath:"D:/upload/"                                    //图片修正地址，同imagePath
+        ,imageManagerPath:"http://localhost:8080/wishdom"                                    //图片修正地址，同imagePath
 
         //屏幕截图配置区
         ,snapscreenHost: location.hostname                                 //屏幕截图的server端文件所在的网站地址或者ip，请不要加http://
@@ -391,7 +391,7 @@
         //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
         //超出字数限制提示  留空支持多语言自动切换，否则按此配置显示
         //,wordOverFlowMsg:''    //<span style="color:red;">你输入的字符个数已经超出最大允许值，服务器可能会拒绝保存！</span>
-
+    	,enterTag:"br"
         //highlightcode
         // 代码高亮时需要加载的第三方插件的路径
         // ,highlightJsUrl:URL + "third-party/SyntaxHighlighter/shCore.js"

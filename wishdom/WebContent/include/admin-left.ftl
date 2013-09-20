@@ -106,12 +106,12 @@
     var winlinksul =  $("#winlinks ul");
     function f_open(url, title, icon) {
         var win = $.ligerDialog.open(
-        { height: 500, url: url, width: 600, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
-            { text: '确定', onclick: function (item, Dialog, index) {
-                win.hide();
-            }
-            }
-        ]
+        { height: 600, url: url, width: 1050, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false//, buttons: [
+           // { text: '确定', onclick: function (item, Dialog, index) {
+               // win.hide();
+           // }
+            //}
+        //]
         });
         var task = jQuery.ligerui.win.tasks[win.id];
         if (task) {
@@ -120,9 +120,9 @@
         return win;
     }
     var links = [
-            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/add_product.htm' },
+            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/list_product.htm' },
             { icon: 'images/3DSMAX.png', title: '产品列表', url: '../grid/treegrid/treegrid.htm' },
-            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/add_news.htm' },
+            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/list_news.htm' },
             { icon: 'images/Program Files Folder.png', title: '修改大师', url: '../grid/frozen/frozengrid.htm' },
             { icon: 'images/Program Files Folder.png', title: '首页艺术品显示', url: '../base/drag.htm' },
             { icon: 'images/Alien Folder.png', title: '首页大图修改', url: '../tree/draggable.htm' },
