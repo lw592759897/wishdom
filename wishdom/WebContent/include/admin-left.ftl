@@ -120,17 +120,17 @@
         return win;
     }
     var links = [
-            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/list_product.htm' },
-            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/list_news.htm' },
-            { icon: 'images/Xp-G5 006.png', title: '定制页显示', url: '${contextPath!}/admin/add_commission.htm' },
-            { icon: 'images/Alien Folder.png', title: '公司介绍', url: '${contextPath!}/admin/add_company.htm' },
-            { icon: 'images/Alien Folder.png', title: '国匠文化', url: '${contextPath!}/admin/add_cultural.htm' },
-            { icon: 'images/Program Files Folder.png', title: '修改大师', url: '../grid/frozen/frozengrid.htm' },
-            { icon: 'images/Program Files Folder.png', title: '首页艺术品显示', url: '../base/drag.htm' },
-            { icon: 'images/Alien Folder.png', title: '首页大图修改', url: '${contextPath!}/admin/add_homebigpicture.htm' },
-            { icon: 'images/Xp-G5 006.png', title: '首页大师图片', url: '${contextPath!}/admin/add_maindspic.htm' },
-            { icon: 'images/Xp-G5 006.png', title: '首页国匠', url: '../comboBox/comboBoxGrid.htm' },
-            { icon: 'images/Alien Folder.png', title: '制作工艺', url: '../layout/layoutFullHeight.htm' }
+            { icon: 'images/3DSMAX.png', title: '发布新产品', url: '${contextPath!}/admin/list_product.htm'},
+            { icon: 'images/3DSMAX.png', title: '发布资讯', url: '${contextPath!}/admin/list_news.htm'},
+            { icon: 'images/Xp-G5 006.png', title: '定制页显示', url: '${contextPath!}/admin/add_commission.htm'},
+            { icon: 'images/Alien Folder.png', title: '公司介绍', url: '${contextPath!}/admin/add_company.htm'},
+            { icon: 'images/Alien Folder.png', title: '国匠文化', url: '${contextPath!}/admin/add_cultural.htm'},
+            { icon: 'images/Program Files Folder.png', title: '修改大师', url: '${contextPath!}/admin/add_master.htm'},
+            { icon: 'images/Program Files Folder.png', title: '首页艺术品定制', url: '${contextPath!}/admin/add_mainyspdz.htm'},
+            { icon: 'images/Alien Folder.png', title: '首页大图修改', url: '${contextPath!}/admin/add_homebigpicture.htm'},
+            { icon: 'images/Xp-G5 006.png', title: '首页大师图片', url: '${contextPath!}/admin/add_maindspic.htm'},
+            { icon: 'images/Xp-G5 006.png', title: '首页关于国匠', url: '${contextPath!}/admin/add_maingj.htm'},
+            { icon: 'images/Alien Folder.png', title: '制作工艺', url: '${contextPath!}/admin/add_mainmake.htm'}
         ];
              
     function onResize() {
