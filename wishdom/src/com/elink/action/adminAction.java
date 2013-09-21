@@ -261,6 +261,100 @@ public class adminAction extends ActionSupport{
 		return null;
 	}
 	
+	public String add_commission(){
+		List<Map<String, Object>> commission = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"CommissionContent", "COMMISSIONCONTENT", "USED"});
+		if(commission!= null && commission.size() > 0){
+			ServletActionContext.getContext().put("commission", commission.get(0));
+		}else{
+			List<Map<String, Object>> democommission = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoCommissionContent", "COMMISSIONCONTENT", "DEMOCOMMISSIONCONTENT"});
+			if(democommission!=null && democommission.size() > 0){
+				ServletActionContext.getContext().put("commission", democommission.get(0));
+			}else{
+				ServletActionContext.getContext().put("commission", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_commission(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"CommissionContent", "COMMISSIONCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( int) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "CommissionContent"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "CommissionContent", content, "COMMISSIONCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_company(){
+		List<Map<String, Object>> company = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Company", "COMPANYCONTENT", "USED"});
+		if(company!= null && company.size() > 0){
+			ServletActionContext.getContext().put("company", company.get(0));
+		}else{
+			List<Map<String, Object>> democompany = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoCompany", "COMPANYCONTENT", "DEMOCOMPANY"});
+			if(democompany!=null && democompany.size() > 0){
+				ServletActionContext.getContext().put("company", democompany.get(0));
+			}else{
+				ServletActionContext.getContext().put("company", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_company(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Company", "COMPANYCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( int) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Company"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Company", content, "COMPANYCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public String add_news(){
 		return "success";
 	}
