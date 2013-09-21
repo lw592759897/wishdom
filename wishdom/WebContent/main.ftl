@@ -1,4 +1,5 @@
 <#include "include/mainhead.ftl">
+<#assign contextPath = request.contextPath />
 <script>
 window.onload=function(){
 	function $(id){return document.getElementById(id);};

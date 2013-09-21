@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>智慧金</title>
 	<link href="./style/style.css" rel="stylesheet"/>
+	<#assign contextPath = request.contextPath />
 	</head>
 <body>
 <div class="index-top">
@@ -11,9 +12,9 @@
     	<a href="#" title=""></a>
     </h1>
     <ul class="index-top-ul">
-    	<li><a href="#" title="贵金属">贵金属</a></li>
-        <li><a href="#" title="钟表">钟表</a></li>
-        <li><a href="#" title="景泰蓝">景泰蓝</a></li>
+    	<li><a href="${contextPath!}/pdshow.htm?catalogId=1" title="贵金属">贵金属</a></li>
+        <li><a href="${contextPath!}/pdshow.htm?catalogId=2" title="钟表">钟表</a></li>
+        <li><a href="${contextPath!}/pdshow.htm?catalogId=3" title="景泰蓝">景泰蓝</a></li>
     </ul>
 </div>
 <!-- index-top over -->
@@ -64,25 +65,25 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
         <ul class="clearfix">
             <li class="com">
                 <em></em>
-                <a href="#" title="联系我们" class="a-com"></a>
+                <a href="${contextPath!}/cominfo.htm" title="联系我们" class="a-com"></a>
             </li>
-            <li><a href="#" title="首页" class="a-index"></a></li>
+            <li><a href="${contextPath!}/index.htm" title="首页" class="a-index"></a></li>
             <li id="about">
-            	<a href="#" title="关于国匠" class="a-about"></a>
+            	<a href="${contextPath!}/cominfo.htm" title="关于国匠" class="a-about"></a>
             	<div class="div-a-about" id="div-a-about">
-                	<a href="#" title="公司简介">公司简介</a>
-                    <a href="#" title="最新资讯">最新资讯</a>
-                    <a href="#" title="国匠文化">国匠文化</a>
+                	<a href="${contextPath!}/cominfo.htm" title="公司简介">公司简介</a>
+                    <a href="${contextPath!}/news.htm" title="最新资讯">最新资讯</a>
+                    <a href="${contextPath!}/gjwh.htm" title="国匠文化">国匠文化</a>
                 </div>
             </li>
-            <li><a href="#" title="国匠大师" class="a-master"></a></li>
-            <li><a href="#" title="制作工艺" class="a-craft"></a></li>
+            <li><a href="${contextPath!}/gjds.htm" title="国匠大师" class="a-master"></a></li>
+            <li><a href="${contextPath!}/zzgy.htm" title="制作工艺" class="a-craft"></a></li>
             <li id="art">
-            	<a href="#" title="国匠艺术品" class="a-art"></a>
+            	<a href="${contextPath!}/pdshow.htm?catalogId=1" title="国匠艺术品" class="a-art"></a>
                 <div class="div-a-about div-a-art" id="div-a-art">
-                	<a href="#" title="贵金属">贵金属</a>
-                    <a href="#" title="钟表">钟&nbsp;&nbsp;&nbsp;表</a>
-                    <a href="#" title="景泰蓝">景泰蓝</a>
+                	<a href="${contextPath!}/pdshow.htm?catalogId=1" title="贵金属">贵金属</a>
+                    <a href="${contextPath!}/pdshow.htm?catalogId=2" title="钟表">钟&nbsp;&nbsp;&nbsp;表</a>
+                    <a href="${contextPath!}/pdshow.htm?catalogId=3" title="景泰蓝">景泰蓝</a>
                 </div>
             </li>
             <li>

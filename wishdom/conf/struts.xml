@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.action.extension" value="action,htm,," /> 
-	<package name="index" namespace="/" extends="struts-default">
+<package name="index" namespace="/" extends="struts-default">
 		<action name="index" class="com.elink.action.mainAction" method="indexAction">
 			<result name="success" type="freemarker">/main.ftl</result>
 		</action>
@@ -22,6 +22,17 @@
 		</action>
 		<action name="zzgy" class="com.elink.action.mainAction" method="zzgy">
 			<result name="success" type="freemarker">/front/zzgy.ftl</result>
+		</action>
+		<action name="gjwh" class="com.elink.action.mainAction" method="gjwh">
+			<result name="success" type="freemarker">/front/gjwh.ftl</result>
+		</action>
+		<action name="productdetail" class="com.elink.action.mainAction" method="productDetail">
+			<result name="success" type="freemarker">/front/productValue.ftl</result>
+			<result name="fail" type="redirect">index.htm</result>
+		</action>
+		<action name="news" class="com.elink.action.mainAction" method="news">
+			<result name="success" type="freemarker">/front/news.ftl</result>
+			<result name="fail" type="redirect">index.htm</result>
 		</action>
 	</package> 
 	<package name="admin" namespace="/admin" extends="struts-default">
@@ -42,6 +53,10 @@
 		</action>
 		<action name="upload_*" class="com.elink.action.adminAction" method="upload_{1}">
 			<interceptor-ref name="fileUploadStack"/>
+		</action>
+		<action name="login" class="com.elink.action.adminAction" method="login">
+			<result name="success" type="redirect">index.htm</result>
+			<result name="error" type="freemarker">/admin/login.ftl</result>
 		</action>
 	</package>
 </struts>

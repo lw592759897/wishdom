@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -12,18 +13,21 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.elink.common.Data2Json;
+import com.elink.common.UserLogin;
 import com.elink.common.dbConUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class adminAction extends ActionSupport{
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
+	HttpSession session=request.getSession();
 	private static JdbcTemplate jdbctemplate = dbConUtil.getCon();
 	
 	private File productimg;
@@ -411,5 +415,29 @@ public class adminAction extends ActionSupport{
 	private String getFold(){
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMdd");
 		return formater.format(new Date());
+	}
+	public String login(){
+		Map userlogin=new HashMap();
+		String userName=request.getParameter("userName");
+		String password=request.getParameter("password");
+		System.out.println("userName:"+userName);
+		System.out.println("password:"+password);
+		System.out.println("jdbctemplate:"+jdbctemplate);
+		String sql="SELECT * FROM userLogin WHERE USERLOGIN_NAME='"+userName+"' AND USERLOGIN_PASSWORD='"+password+"'";
+		System.out.println("sql:"+sql);
+		try{
+			userlogin=jdbctemplate.queryForMap(sql);
+			if(userlogin!=null&&userlogin.size()>0){
+				UserLogin user=new UserLogin();
+				user.setUserLoginId((String)userlogin.get("USERLOGIN_ID"));
+				user.setUserName((String)userlogin.get("USERLOGIN_NAME"));
+				user.setUserTye((String)userlogin.get("USERLOGIN_TYPE"));
+				session.setAttribute("userLogin",user);
+				return "success";
+			} 
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		return "error";
 	}
 }

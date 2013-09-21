@@ -39,32 +39,64 @@
 <div class="box-info">
     <div class="box clearfix">
         <div class="pic-info">
-        	<div class="box-info-share">
-            	<div class="jqzoom" id="spec-n1"><img src="images/pic-info-demo.png" jqimg="images/pic-info-demo.png" width="540" height="347" /></div>
-                	<span class="up" id="spec-left"></span>
-                    <div class="commodity-img-list" id="spec-list">
-                        <ul class="clearfix" id="list-h">
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                            <li><img src="images/pic-info-demo.png"/></li>
-                        </ul>
-                    </div>
-                    <span class="down" id="spec-right"></span>
+ 	<div class="box-info-share">
+ 				<#if producttl?exists>
+ 					<#if producttl.productImg?exists>
+                  		  ${producttl.productImg.CONTENT!}
+                   <#else> 
+                   		<div class="jqzoom" id="spec-n1"><img src="images/pic-info-demo.png" jqimg="images/pic-info-demo.png" width="540" height="347" /></div>
+		                	<span class="up" id="spec-left"></span>
+		                    <div class="commodity-img-list" id="spec-list">
+		                        <ul class="clearfix" id="list-h">
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic06.jpg"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                        </ul>
+		                    </div>
+		                    <span class="down" id="spec-right"></span>
+          		</#if>
+          		<#else>
+          		<div class="jqzoom" id="spec-n1"><img src="images/pic-info-demo.png" jqimg="images/pic-info-demo.png" width="540" height="347" /></div>
+		                	<span class="up" id="spec-left"></span>
+		                    <div class="commodity-img-list" id="spec-list">
+		                        <ul class="clearfix" id="list-h">
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic06.jpg"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                            <li><img src="images/pic-info-demo.png"/></li>
+		                        </ul>
+		                    </div>
+		                    <span class="down" id="spec-right"></span>
+          		</#if>
             </div>
             <!--box-info-share over -->
             <script>
@@ -74,7 +106,7 @@
                 <h3 class="h3-news">国匠最新动态</h3>
                 <div class="box-news-list">
                     <ul class="list-news">
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容动态内容动态内容动态内容动态内容</a></li>
+                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
                         <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
                         <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
                         <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
@@ -94,36 +126,51 @@
         </div>
         <!-- pic-info over -->
         <script>
-		window.onload=function(){
-			function $(id){return document.getElementById(id);};
-			$('about').onmouseover=function(){$('div-a-about').style.display='block';};$('about').onmouseout=function(){$('div-a-about').style.display='none';};$('art').onmouseover=function(){$('div-a-art').style.display='block';};$('art').onmouseout=function(){$('div-a-art').style.display='none';};
-			var disY = 0;$('scroll-btn').onmousedown = function(ev){var ev = ev || window.event;disY = ev.clientY - $('scroll-btn').offsetTop;document.onmousemove = function(ev){var ev = ev || window.event;var T = ev.clientY - disY;if(T<0){T = 0;}else if(T>$('scroll-l').offsetHeight - $('scroll-btn').offsetHeight){T = $('scroll-l').offsetHeight - $('scroll-btn').offsetHeight;}$('scroll-btn').style.top = T + 'px';var scale = T/($('scroll-l').offsetHeight - $('scroll-btn').offsetHeight);$('box-scroll').style.top = - scale * ($('box-scroll').offsetHeight - $('news-info-right').offsetHeight) + 'px';};document.onmouseup = function(){document.onmousemove = null;document.onmouseup = null;};return false;};
-		};
+				window.onload=function(){
+					function $(id){return document.getElementById(id);};
+					$('about').onmouseover=function(){$('div-a-about').style.display='block';};$('about').onmouseout=function(){$('div-a-about').style.display='none';};$('art').onmouseover=function(){$('div-a-art').style.display='block';};$('art').onmouseout=function(){$('div-a-art').style.display='none';};
+					var disY = 0;$('scroll-btn').onmousedown = function(ev){var ev = ev || window.event;disY = ev.clientY - $('scroll-btn').offsetTop;document.onmousemove = function(ev){var ev = ev || window.event;var T = ev.clientY - disY;if(T<0){T = 0;}else if(T>$('scroll-l').offsetHeight - $('scroll-btn').offsetHeight){T = $('scroll-l').offsetHeight - $('scroll-btn').offsetHeight;}$('scroll-btn').style.top = T + 'px';var scale = T/($('scroll-l').offsetHeight - $('scroll-btn').offsetHeight);$('box-scroll').style.top = - scale * ($('box-scroll').offsetHeight - $('news-info-right').offsetHeight) + 'px';};document.onmouseup = function(){document.onmousemove = null;document.onmouseup = null;};return false;};
+				};
 		</script>
         <div class="text-info">
-        	<h3>【五福五代宝玺】</h3>
+        	<#if producttl?exists>
+        	<h3>${producttl.productDetail.PRODUCTNAME!}</h3>
             <div class="news-info-right" id="news-info-right">
             	<div class="box-scroll" id="box-scroll">
-                    <p>很多中小企业对公司简介不晓得如何写，不是写的太少就是写的太多，总是不能好好掌握，明天我们在这里好好说说关于公司简介的书写办法。公司简介是什么，就是对公司，对企业的引见。</p>
-                    <p>这种引见不是一句话带过，也不是长篇大论，是复杂简明的引见公司的一段文字，让他人初步理解公司的根本状况。饶网站筹划收录了一些比拟不错的公司简介范文，希望经过这些范文可以让您明白公司简介应该怎样写。新饶网站筹划公司简介范文新饶网站筹划股份无限公司成立于</p>
-                    <p>很多中小企业对公司简介不晓得如何写，不是写的太少就是写的太多，总是不能好好掌握，明天我们在这里好好说说关于公司简介的书写办法。公司简介是什么，就是对公司，对企业的引见。</p>
-                    <p>这种引见不是一句话带过，也不是长篇大论，是复杂简明的引见公司的一段文字，让他人初步理解公司的根本状况。饶网站筹划收录了一些比拟不错的公司简介范文，希望经过这些范文可以让您明白公司简介应该怎样写。新饶网站筹划公司简介范文新饶网站筹划股份无限公司成立于</p>
-                    <p>很多中小企业对公司简介不晓得如何写，不是写的太少就是写的太多，总是不能好好掌握，明天我们在这里好好说说关于公司简介的书写办法。公司简介是什么，就是对公司，对企业的引见。</p>
-                    <p>这种引见不是一句话带过，也不是长篇大论，是复杂简明的引见公司的一段文字，让他人初步理解公司的根本状况。饶网站筹划收录了一些比拟不错的公司简介范文，希望经过这些范文可以让您明白公司简介应该怎样写。新饶网站筹划公司简介范文新饶网站筹划股份无限公司成立于</p>
-                    <p>很多中小企业对公司简介不晓得如何写，不是写的太少就是写的太多，总是不能好好掌握，明天我们在这里好好说说关于公司简介的书写办法。公司简介是什么，就是对公司，对企业的引见。</p>
-                    <p>这种引见不是一句话带过，也不是长篇大论，是复杂简明的引见公司的一段文字，让他人初步理解公司的根本状况。饶网站筹划收录了一些比拟不错的公司简介范文，希望经过这些范文可以让您明白公司简介应该怎样写。新饶网站筹划公司简介范文新饶网站筹划股份无限公司成立于</p>
+            		${producttl.productDetail.CONTENT!}
                 </div>
                 <div class="scroll-l" id="scroll-l"><div class="scroll-btn" id="scroll-btn"></div></div>
             </div>
+            <#else>
+            	<h3>未知</h3>
+	            <div class="news-info-right" id="news-info-right">
+	            	<div class="box-scroll" id="box-scroll">
+	            		 
+	                </div>
+	                <div class="scroll-l" id="scroll-l"><div class="scroll-btn" id="scroll-btn"></div></div>
+	            </div>
+            </#if>
             <!--news-info-right over -->
             
             <p class="text-info-p">
             	<span>编号：</span>
-                123456
+            	<#if producttl?exists>
+	            	<#if producttl.productDetail?exists>
+	            			${producttl.productDetail.PRODUCTNUMBER!}
+	            	</#if>
+	            	<#else>
+	            		未知
+            	</#if>
             </p>
             <p class="text-info-p">
                 <span>规格：</span>
-                未知
+                 	<#if producttl?exists>
+	            	<#if producttl.productDetail?exists>
+	            			${producttl.productDetail.PRODUCTDES!}
+	            	</#if>
+	            	<#else>
+	            			未知
+            	</#if> 
             </p>
             
             <div class="box-share clearfix">
@@ -140,7 +187,7 @@
                 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
                 <script type="text/javascript" id="bdshell_js"></script>
                 <script type="text/javascript">
-                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
                 </script>
                 <!-- Baidu Button END -->
                 <div class="consult"><a href="tencent://message/?uin=123456789&Site=购物咨询&Menu=yes" title="购物咨询"></a></div><!-- 修改 uin 咨询QQ -->

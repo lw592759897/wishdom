@@ -4,16 +4,11 @@
 <div class="bg-box-type clearfix">
 	<div class="box-type">
         <ul class="list-type">
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
-            <li><a href="#"><img src="images/pic-type01.png" width="300" height="240"/></a></li>
+        <#if productList?exists>
+        <#list productList as product>
+         	<li><a href="${contextPath!}/productdetail.htm?productId=${product.PRODUCTID!}"><img src="${contextPath!}/${product.PRODUCTIMG}" width="290px" title="${product.PRODUCTNAME}"></a></li> 
+        </#list>
+        </#if>
         </ul>
     </div>
     
