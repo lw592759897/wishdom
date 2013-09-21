@@ -120,7 +120,7 @@ public class adminAction extends ActionSupport{
 			if(product!=null && product.size() > 0){
 				List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = 'PRDCONTENT'", new Object[]{productId});
 				if(contents!=null && contents.size() > 0){
-					int conId = ( int) contents.get(0).get("CONID");
+					int conId = ( Integer) contents.get(0).get("CONID");
 					jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, productId});
 				}
 				jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED','PRDCONTENT', NOW())", new Object[]{ productId, content});
@@ -179,7 +179,7 @@ public class adminAction extends ActionSupport{
 			if(product!=null && product.size() > 0){
 				List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = 'PRDDESCONTENT'", new Object[]{productId});
 				if(contents!=null && contents.size() > 0){
-					int conId = ( int) contents.get(0).get("CONID");
+					int conId = ( Integer) contents.get(0).get("CONID");
 					jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, productId});
 				}
 				jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED','PRDDESCONTENT', NOW())", new Object[]{ productId, content});
@@ -297,7 +297,7 @@ public class adminAction extends ActionSupport{
 		if(StringUtils.isNotEmpty(content)){
 			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"CommissionContent", "COMMISSIONCONTENT"});
 			if(contents!=null && contents.size() > 0){
-				int conId = ( int) contents.get(0).get("CONID");
+				int conId = ( Integer) contents.get(0).get("CONID");
 				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "CommissionContent"});
 			}
 			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "CommissionContent", content, "COMMISSIONCONTENT"});
@@ -344,7 +344,7 @@ public class adminAction extends ActionSupport{
 		if(StringUtils.isNotEmpty(content)){
 			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Company", "COMPANYCONTENT"});
 			if(contents!=null && contents.size() > 0){
-				int conId = ( int) contents.get(0).get("CONID");
+				int conId = ( Integer) contents.get(0).get("CONID");
 				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Company"});
 			}
 			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Company", content, "COMPANYCONTENT"});
@@ -391,7 +391,7 @@ public class adminAction extends ActionSupport{
 		if(StringUtils.isNotEmpty(content)){
 			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Cultural", "CULTURALCONTENT"});
 			if(contents!=null && contents.size() > 0){
-				int conId = ( int) contents.get(0).get("CONID");
+				int conId = ( Integer) contents.get(0).get("CONID");
 				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Cultural"});
 			}
 			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Cultural", content, "CulturalCONTENT"});
@@ -438,7 +438,7 @@ public class adminAction extends ActionSupport{
 		if(StringUtils.isNotEmpty(content)){
 			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Homebigpicture", "HOMEBIGPICTURECONTENT"});
 			if(contents!=null && contents.size() > 0){
-				int conId = ( int) contents.get(0).get("CONID");
+				int conId = ( Integer) contents.get(0).get("CONID");
 				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Homebigpicture"});
 			}
 			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Homebigpicture", content, "HOMEBIGPICTURECONTENT"});
@@ -485,10 +485,198 @@ public class adminAction extends ActionSupport{
 		if(StringUtils.isNotEmpty(content)){
 			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Maindspic", "MAINDSPICCONTENT"});
 			if(contents!=null && contents.size() > 0){
-				int conId = ( int) contents.get(0).get("CONID");
+				int conId = ( Integer) contents.get(0).get("CONID");
 				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Maindspic"});
 			}
 			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Maindspic", content, "MAINDSPICCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_maingj() {
+		List<Map<String, Object>> maingjcontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MaingjContent", "MAINGJCONTENT", "USED"});
+		if(maingjcontent!= null && maingjcontent.size() > 0){
+			ServletActionContext.getContext().put("maingjcontent", maingjcontent.get(0));
+		}else{
+			List<Map<String, Object>> demomaingjcontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoMaingjContent", "MAINGJCONTENT", "DEMOMAINGJCONTENT"});
+			if(demomaingjcontent!=null && demomaingjcontent.size() > 0){
+				ServletActionContext.getContext().put("maingjcontent", demomaingjcontent.get(0));
+			}else{
+				ServletActionContext.getContext().put("maingjcontent", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_maingj(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"MaingjContent", "MAINGJCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( Integer) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "MaingjContent"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "MaingjContent", content, "MAINGJCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_master() {
+		List<Map<String, Object>> mastercontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MasterContent", "MASTERCONTENT", "USED"});
+		if(mastercontent!= null && mastercontent.size() > 0){
+			ServletActionContext.getContext().put("mastercontent", mastercontent.get(0));
+		}else{
+			List<Map<String, Object>> demomaingjcontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoMasterContent", "MASTERCONTENT", "DEMOMASTERCONTENT"});
+			if(demomaingjcontent!=null && demomaingjcontent.size() > 0){
+				ServletActionContext.getContext().put("mastercontent", demomaingjcontent.get(0));
+			}else{
+				ServletActionContext.getContext().put("mastercontent", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_master(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"MasterContent", "MASTERCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( Integer) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "MasterContent"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "MasterContent", content, "MASTERCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_mainmake() {
+		List<Map<String, Object>> mainmakecontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MainMakeContent", "MAINMAKECONTENT", "USED"});
+		if(mainmakecontent!= null && mainmakecontent.size() > 0){
+			ServletActionContext.getContext().put("mainmakecontent", mainmakecontent.get(0));
+		}else{
+			List<Map<String, Object>> demomainmakecontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoMainMakeContent", "MAINMAKECONTENT", "DEMOMAINMAKECONTENT"});
+			if(demomainmakecontent!=null && demomainmakecontent.size() > 0){
+				ServletActionContext.getContext().put("mainmakecontent", demomainmakecontent.get(0));
+			}else{
+				ServletActionContext.getContext().put("mainmakecontent", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_mainmake(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"MainMakeContent", "MAINMAKECONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( Integer) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "MainMakeContent"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "MainMakeContent", content, "MAINMAKECONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_mainyspdz() {
+		List<Map<String, Object>> mainyspdz = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MainYspdz", "MAINYSPDZCONTENT", "USED"});
+		if(mainyspdz!= null && mainyspdz.size() > 0){
+			ServletActionContext.getContext().put("mainyspcontent", mainyspdz.get(0));
+		}else{
+			List<Map<String, Object>> demomainyspdz = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoMainYspdzContent", "MAINYSPDZCONTENT", "DEMOMAINYSPDZCONTENT"});
+			if(demomainyspdz!=null && demomainyspdz.size() > 0){
+				ServletActionContext.getContext().put("mainyspcontent", demomainyspdz.get(0));
+			}else{
+				ServletActionContext.getContext().put("mainyspcontent", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_mainyspdz(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"MainYspdz", "MAINYSPDZCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( Integer) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "MainYspdz"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "MainYspdz", content, "MAINYSPDZCONTENT"});
 			result = "success";
 		}
 		
@@ -549,7 +737,7 @@ public class adminAction extends ActionSupport{
 				if(StringUtils.isNotEmpty(content)){
 					List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{ newsId, "NEWSCONTENT"});
 					if(contents!=null && contents.size() > 0){
-						int conId = ( int) contents.get(0).get("CONID");
+						int conId = ( Integer) contents.get(0).get("CONID");
 						jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, newsId});
 					}
 					jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ newsId, content, "NEWSCONTENT"});
