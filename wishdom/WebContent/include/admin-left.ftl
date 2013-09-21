@@ -130,7 +130,8 @@
             { icon: 'images/Alien Folder.png', title: '首页大图修改', url: '${contextPath!}/admin/add_homebigpicture.htm'},
             { icon: 'images/Xp-G5 006.png', title: '首页大师图片', url: '${contextPath!}/admin/add_maindspic.htm'},
             { icon: 'images/Xp-G5 006.png', title: '首页关于国匠', url: '${contextPath!}/admin/add_maingj.htm'},
-            { icon: 'images/Alien Folder.png', title: '制作工艺', url: '${contextPath!}/admin/add_mainmake.htm'}
+            { icon: 'images/Alien Folder.png', title: '首页制作工艺', url: '${contextPath!}/admin/add_mainmake.htm'},
+            { icon: 'images/Alien Folder.png', title: '制作工艺', url: '${contextPath!}/admin/list_makepage.htm'}
         ];
              
     function onResize() {
