@@ -1,11 +1,9 @@
 package com.elink.common;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class Data2Json {
 	

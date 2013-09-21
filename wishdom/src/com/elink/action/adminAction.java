@@ -25,6 +25,8 @@ import com.elink.common.dbConUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class adminAction extends ActionSupport{
+	private static final long serialVersionUID = 1L;
+	
 	HttpServletRequest request = ServletActionContext.getRequest();
 	HttpServletResponse response = ServletActionContext.getResponse();
 	HttpSession session=request.getSession();
@@ -359,8 +361,268 @@ public class adminAction extends ActionSupport{
 		return null;
 	}
 	
-	public String add_news(){
+	public String add_cultural(){
+		List<Map<String, Object>> cultural = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Cultural", "CULTURALCONTENT", "USED"});
+		if(cultural!= null && cultural.size() > 0){
+			ServletActionContext.getContext().put("cultural", cultural.get(0));
+		}else{
+			List<Map<String, Object>> democultural = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoCultural", "CULTURALCONTENT", "DEMOCULTURAL"});
+			if(democultural!=null && democultural.size() > 0){
+				ServletActionContext.getContext().put("cultural", democultural.get(0));
+			}else{
+				ServletActionContext.getContext().put("cultural", "没有内容模版定义");
+			}
+		}
 		return "success";
+	}
+	
+	public String update_cultural(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Cultural", "CULTURALCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( int) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Cultural"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Cultural", content, "CulturalCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_homebigpicture(){
+		List<Map<String, Object>> homebigpicture = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Homebigpicture", "HOMEBIGPICTURECONTENT", "USED"});
+		if(homebigpicture!= null && homebigpicture.size() > 0){
+			ServletActionContext.getContext().put("homebigpicture", homebigpicture.get(0));
+		}else{
+			List<Map<String, Object>> demohomebigpicture = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoHomebigpicture", "HOMEBIGPICTURECONTENT", "DEMOHOMEBIGPICTURE"});
+			if(demohomebigpicture!=null && demohomebigpicture.size() > 0){
+				ServletActionContext.getContext().put("homebigpicture", demohomebigpicture.get(0));
+			}else{
+				ServletActionContext.getContext().put("homebigpicture", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_homebigpicture(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Homebigpicture", "HOMEBIGPICTURECONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( int) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Homebigpicture"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Homebigpicture", content, "HOMEBIGPICTURECONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_maindspic(){
+		List<Map<String, Object>> maindspic = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Maindspic", "MAINDSPICCONTENT", "USED"});
+		if(maindspic!= null && maindspic.size() > 0){
+			ServletActionContext.getContext().put("maindspic", maindspic.get(0));
+		}else{
+			List<Map<String, Object>> demomaindspic = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"DemoMaindspic", "MAINDSPICCONTENT", "DEMOMAINDSPIC"});
+			if(demomaindspic!=null && demomaindspic.size() > 0){
+				ServletActionContext.getContext().put("maindspic", demomaindspic.get(0));
+			}else{
+				ServletActionContext.getContext().put("maindspic", "没有内容模版定义");
+			}
+		}
+		return "success";
+	}
+	
+	public String update_maindspic(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(content)){
+			List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{"Maindspic", "MAINDSPICCONTENT"});
+			if(contents!=null && contents.size() > 0){
+				int conId = ( int) contents.get(0).get("CONID");
+				jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, "Maindspic"});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ "Maindspic", content, "MAINDSPICCONTENT"});
+			result = "success";
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String add_news(){
+		String newsId = request.getParameter("newsId");
+		if(StringUtils.isNotEmpty(newsId)){
+			List<Map<String, Object>> newslist = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{newsId});
+			if(newslist!=null && newslist.size()>0){
+				ServletActionContext.getContext().put("news", newslist.get(0));
+				List<Map<String, Object>> newscontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{newsId, "NEWSCONTENT", "USED"});
+				if(newscontent != null && newscontent.size() > 0){
+					ServletActionContext.getContext().put("newscontent", newscontent.get(0));
+				}
+			}
+		}
+		return "success";
+	}
+	
+	public String list_news(){
+		List<Map<String, Object>> newslist = jdbctemplate.queryForList("SELECT NEWSID, NEWSTITLE, NEWSKEYWORDS, NEWSSHOW, NEWSHEADSHOW FROM news");
+		if(newslist!=null && newslist.size()>0){
+			ServletActionContext.getContext().put("news", Data2Json.data2json(newslist));
+		}else{
+			ServletActionContext.getContext().put("news", null);
+		}
+		return "success";
+	}
+	
+	public String update_news(){
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		String result = "error";
+		
+		String newsId = request.getParameter("newsId");
+		String newstitle = request.getParameter("newstitle");
+		String newsKeywords = request.getParameter("newsKeywords");
+		String newsshow = request.getParameter("newsshow");
+		String newsheadshow = request.getParameter("newsheadshow");
+		String content = request.getParameter("content");
+		if(StringUtils.isNotEmpty(newsId)){
+			List<Map<String, Object>> news = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{newsId});
+			if(news!= null && news.size() > 0){
+				jdbctemplate.update("UPDATE news SET NEWSTITLE=?,NEWSKEYWORDS=?,NEWSSHOW=?,NEWSHEADSHOW=? WHERE NEWSID=?", new Object[]{newstitle,newsKeywords,newsshow,newsheadshow,newsId});
+				if(StringUtils.isNotEmpty(content)){
+					List<Map<String, Object>> contents = jdbctemplate.queryForList("SELECT * FROM content WHERE CONTENTID = ? AND CONTENTOPT = 'USED' AND CONTENTTYPE = ?", new Object[]{ newsId, "NEWSCONTENT"});
+					if(contents!=null && contents.size() > 0){
+						int conId = ( int) contents.get(0).get("CONID");
+						jdbctemplate.update("UPDATE content SET CONTENTOPT = 'OLDED' WHERE CONID = ? AND CONTENTID = ?", new Object[]{ conId, newsId});
+					}
+					jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ newsId, content, "NEWSCONTENT"});
+				}
+			}
+			result = "success";
+		}else{
+			jdbctemplate.update("INSERT INTO news(NEWSTITLE,NEWSKEYWORDS,NEWSSHOW,NEWSHEADSHOW,NEWSDATE) VALUES(?,?,?,?,NOW())", new Object[]{newstitle,newsKeywords,newsshow,newsheadshow});
+			Map<String, Object> lastnewsId = jdbctemplate.queryForMap("SELECT MAX(NEWSID) AS NEWSID FROM news");
+			int id = Integer.parseInt(lastnewsId.get("NEWSID")+"");
+			List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{id-1});
+			int perid = -1;
+			if(pernews!=null && pernews.size() > 0){
+				perid = ( Integer)pernews.get(0).get("NEWSID");
+				jdbctemplate.update("UPDATE news SET PERNEWSID=? WHERE NEWSID=?", new Object[]{perid,id});
+				jdbctemplate.update("UPDATE news SET NEXTNEWSID=? WHERE NEWSID=?", new Object[]{id,perid});
+			}
+			jdbctemplate.update("INSERT INTO content(CONTENTID, CONTENT, CONTENTOPT, CONTENTTYPE, CONTENTDATE) VALUES(?,?,'USED',?, NOW())", new Object[]{ id, content, "NEWSCONTENT"});
+			result = "success";
+		}
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String del_news(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		String newsId = request.getParameter("newsId");
+		if(StringUtils.isNotEmpty(newsId)){
+			List<Map<String, Object>> news = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{newsId});
+			if(news!=null && news.size() > 0){
+				int perid = -1;
+				if(news.get(0).get("PERNEWSID")!=null){
+					perid = (int)news.get(0).get("PERNEWSID");
+				}
+				int nextid = -1;
+				if(news.get(0).get("PERNEWSID")!=null){
+					nextid = (int)news.get(0).get("NEXTNEWSID");
+				}
+				List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{perid});
+				if(pernews!=null && pernews.size() > 0){
+					jdbctemplate.update("UPDATE news SET NEXTNEWSID=? WHERE NEWSID=?", new Object[]{nextid,perid});
+				}
+				List<Map<String, Object>> nextnews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{nextid});
+				if(nextnews!=null && nextnews.size() > 0){
+					jdbctemplate.update("UPDATE news SET PERNEWSID=? WHERE NEWSID=?", new Object[]{perid,nextid});
+				}
+				jdbctemplate.update("DELETE FROM content WHERE CONTENTID = ? AND CONTENTTYPE=?", new Object[]{newsId, "NEWSCONTENT"});
+				jdbctemplate.update("DELETE FROM news WHERE NEWSID = ?", new Object[]{newsId});
+				result = "success";
+			}
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return null;
 	}
 	
 	public String upload_propic(){
@@ -417,14 +679,10 @@ public class adminAction extends ActionSupport{
 		return formater.format(new Date());
 	}
 	public String login(){
-		Map userlogin=new HashMap();
+		Map<String, Object> userlogin=new HashMap<String, Object>();
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
-		System.out.println("userName:"+userName);
-		System.out.println("password:"+password);
-		System.out.println("jdbctemplate:"+jdbctemplate);
 		String sql="SELECT * FROM userLogin WHERE USERLOGIN_NAME='"+userName+"' AND USERLOGIN_PASSWORD='"+password+"'";
-		System.out.println("sql:"+sql);
 		try{
 			userlogin=jdbctemplate.queryForMap(sql);
 			if(userlogin!=null&&userlogin.size()>0){
