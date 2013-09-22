@@ -57,7 +57,7 @@
     }
     function setFocus() {
         UE.getEditor('editor').focus();
-    }
+    } 
 	function submit(){
 		hascontent = UE.getEditor('editor').hasContents();
 		if(hascontent==true){
