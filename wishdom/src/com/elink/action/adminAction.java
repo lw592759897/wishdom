@@ -746,12 +746,17 @@ public class adminAction extends ActionSupport{
 			result = "success";
 		}else{
 			jdbctemplate.update("INSERT INTO news(NEWSTITLE,NEWSKEYWORDS,NEWSSHOW,NEWSHEADSHOW,NEWSDATE) VALUES(?,?,?,?,NOW())", new Object[]{newstitle,newsKeywords,newsshow,newsheadshow});
-			Map<String, Object> lastnewsId = jdbctemplate.queryForMap("SELECT MAX(NEWSID) AS NEWSID FROM news");
-			int id = Integer.parseInt(lastnewsId.get("NEWSID")+"");
-			List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{id-1});
+			List<Map<String, Object>> lastnewsId = jdbctemplate.queryForList("SELECT NEWSID FROM news ORDER BY NEWSID DESC");
+			int id = -1;
 			int perid = -1;
+			if( lastnewsId != null && lastnewsId.size() > 0){
+				id = Integer.parseInt(lastnewsId.get(0).get("NEWSID")+"");
+				if(lastnewsId.size()>1){
+					perid = (Integer) lastnewsId.get(1).get("NEWSID");
+				}
+			}
+			List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{perid});
 			if(pernews!=null && pernews.size() > 0){
-				perid = ( Integer)pernews.get(0).get("NEWSID");
 				jdbctemplate.update("UPDATE news SET PERNEWSID=? WHERE NEWSID=?", new Object[]{perid,id});
 				jdbctemplate.update("UPDATE news SET NEXTNEWSID=? WHERE NEWSID=?", new Object[]{id,perid});
 			}
@@ -786,7 +791,7 @@ public class adminAction extends ActionSupport{
 					perid = (Integer)news.get(0).get("PERNEWSID");
 				}
 				int nextid = -1;
-				if(news.get(0).get("PERNEWSID")!=null){
+				if(news.get(0).get("NEXTNEWSID")!=null){ 
 					nextid = (Integer)news.get(0).get("NEXTNEWSID");
 				}
 				List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{perid});
@@ -799,6 +804,90 @@ public class adminAction extends ActionSupport{
 				}
 				jdbctemplate.update("DELETE FROM content WHERE CONTENTID = ? AND CONTENTTYPE=?", new Object[]{newsId, "NEWSCONTENT"});
 				jdbctemplate.update("DELETE FROM news WHERE NEWSID = ?", new Object[]{newsId});
+				result = "success";
+			}
+		}
+		
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String list_makepage(){
+		List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT MAKEPRODUCTID, MAKEPRODUCTSEQ, MAKEPRODUCTDES FROM make_product");
+		if(makelist!=null && makelist.size()>0){
+			ServletActionContext.getContext().put("makelist", Data2Json.data2json(makelist));
+		}else{
+			ServletActionContext.getContext().put("makelist", null);
+		}
+		return "success";
+	}
+	
+	public String add_makepage(){
+		String makeId = request.getParameter("makeId");
+		if(StringUtils.isNotEmpty(makeId)){
+			List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT * FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeId});
+			if(makelist!=null && makelist.size()>0){
+				ServletActionContext.getContext().put("makes", makelist.get(0));
+			}
+		}
+		return "success";
+	}
+	
+	public String update_makepage(){
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		String result = "error";
+		
+		String makeproductId = request.getParameter("makeproductid");
+		String makeProductdes = request.getParameter("makeProductdes");
+		String makeProductseq = request.getParameter("makeProductseq");
+		String content = request.getParameter("content");
+		String makeproductinnerimg = request.getParameter("makeproductinnerimg");
+		String makeproductimgurl = request.getParameter("makeproductimgurl");
+		if(StringUtils.isNotEmpty(makeproductId)){
+			List<Map<String, Object>> makes = jdbctemplate.queryForList("SELECT * FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeproductId});
+			if(makes!= null && makes.size() > 0){
+				jdbctemplate.update("UPDATE make_product SET MAKEPRODUCTSEQ=?,MAKEPRODUCTDES=?,MAKEPRODUCTIMGURL=?,MAKEPRODUCTINNERIMG=?,MAKEPRODUCTINNERCONTENT=? WHERE MAKEPRODUCTID=?", new Object[]{makeProductseq,makeProductdes,makeproductimgurl,makeproductinnerimg,content,makeproductId});
+				result = "success";
+			}
+		}else{
+			jdbctemplate.update("INSERT INTO make_product(MAKEPRODUCTSEQ,MAKEPRODUCTDES,MAKEPRODUCTIMGURL,MAKEPRODUCTINNERIMG,MAKEPRODUCTINNERCONTENT) VALUES(?,?,?,?,?)", new Object[]{makeProductseq,makeProductdes,makeproductimgurl,makeproductinnerimg,content});
+			result = "success";
+		}
+		try {
+			out.print(result);
+			out.flush();
+			out.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String del_makepage(){
+		PrintWriter out = null;
+		String result = "error";
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		String makeId = request.getParameter("makeId");
+		if(StringUtils.isNotEmpty(makeId)){
+			List<Map<String, Object>> makes = jdbctemplate.queryForList("SELECT * FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeId});
+			if(makes!=null && makes.size() > 0){
+				jdbctemplate.update("DELETE FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeId});
 				result = "success";
 			}
 		}
