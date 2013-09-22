@@ -114,7 +114,7 @@ body{ background:#000; font-family:'微软雅黑'; font-size:12px; overflow-x:hi
 .list-about-masrter h5{ margin:25px 0; padding:0 10px; position:relative; font-family:'微软雅黑';}
 	.list-about-masrter h5 span{ position:absolute; right:10px; top:2px; font-family:Myriad Pro; color:#554726; font-size:14px;}
 	.list-about-masrter h5 a{ color:#554726; font-size:14px;}
-.list-about-masrter p{ padding:0 10px; font-family:'微软雅黑'; color:#554726; line-height:24px; font-size:14px;}
+.list-about-masrter p{ padding:0 0px; font-family:'微软雅黑'; color:#554726; line-height:24px; font-size:14px;}
 .list-about-masrter .more{ font-family:Arial Unicode MS; margin-left:10px; color:#554726; font-weight:bold;}
 .list-about-masrter .more:hover{ color:#333; text-decoration:underline;}
 /*customize*/
@@ -199,7 +199,7 @@ body{ background:#000; font-family:'微软雅黑'; font-size:12px; overflow-x:hi
 .bg-box-type{ min-height:1162px; padding-bottom:10px; background:url(../images/bg-gjs.png) center top no-repeat;}
 .bg-box-type-zb{ background:url(../images/bg-zb.png) center top no-repeat;}
 .bg-box-type-jtl{ background:url(../images/bg-jtl.png) center top no-repeat;}
-.box-type{ width:1200px; overflow:hidden; margin:100px auto 30px; position:relative; border-top:dashed 1px #392e1f;}
+.box-type{ width:1200px; overflow:hidden; margin:100px auto 30px; position:relative; border-top:dashed 1px #392e1f;height:700px;}
 	.box-type ul{ width:1300px;}
 	.box-type li{ float:left; display:inline; width:300px; height:240px; overflow:hidden; border-right:dashed 1px #392e1f; border-bottom:dashed 1px #392e1f;}
 .list-link{ float:left; display:inline; width:370px; height:218px; padding:5px; margin:0 10px; background:url(../images/bg-img-link.png) 0 0 no-repeat;}
@@ -251,3 +251,23 @@ body{ background:#000; font-family:'微软雅黑'; font-size:12px; overflow-x:hi
 .ei_descr{position:absolute;width:900px;height:616px;left:51px;top:0px;}
 
 
+#page a{ 
+display:block; 
+border:1px solid red; 
+background:black; 
+color:white; 
+width:20px; 
+height:20px; 
+float:left; 
+margin-left:10px; 
+text-align:center; 
+text-decoration:none; 
+font-size:12px; 
+} 
+#page a.current:link,#page a.current:visited{ 
+background:white; 
+color:black; 
+} 
+#page a.page_:link,#page a.page_:visited{ 
+width:50px; 
+} 

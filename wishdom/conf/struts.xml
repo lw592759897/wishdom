@@ -34,6 +34,10 @@
 			<result name="success" type="freemarker">/front/news.ftl</result>
 			<result name="fail" type="redirect">index.htm</result>
 		</action>
+		<action name="productdz" class="com.elink.action.mainAction" method="productdz">
+			<result name="success" type="freemarker">/front/productdz.ftl</result>
+			<result name="fail" type="redirect">index.htm</result>
+		</action>
 	</package> 
 	<package name="admin" namespace="/admin" extends="struts-default">
 		<action name="index" class="com.elink.action.adminAction" method="loginAction">

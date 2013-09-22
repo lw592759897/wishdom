@@ -106,14 +106,13 @@
                 <h3 class="h3-news">国匠最新动态</h3>
                 <div class="box-news-list">
                     <ul class="list-news">
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-                        <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
+                    <#if producttl?exists>
+	                    <#if producttl.newsList?exists>
+	                    	<#list producttl.newsList as pdlist>
+	                        	<li><span>(${pdlist.NEWSDATE!})</span><a href="${contextPath!}/news.htm?newsid=${pdlist.NEWSID!}">${pdlist.NEWSTITLE!}</a></li>
+	                        </#list>
+                        </#if>
+                    </#if>
                     </ul>
                 </div>
                 <div class="news-change">

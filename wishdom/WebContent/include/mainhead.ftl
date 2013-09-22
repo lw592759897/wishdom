@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>智慧金</title>
 	<link href="./style/style.css" rel="stylesheet"/>
-	<#assign contextPath = request.contextPath />
+	<#assign contextPath = request.contextPath /> 
 	</head>
 <body>
 <div class="index-top">
@@ -23,32 +23,9 @@
 $(document).ready(function() {$(".num-div").show();$(".num-div a:first").addClass("active");var imageWidth = $(".window").width();var imageSum = $(".box-pic img").size();var imageReelWidth = imageWidth * imageSum;$(".box-pic").css({'width' : imageReelWidth});rotate = function(){var triggerID = $active.attr("rel") - 1;var image_reelPosition = triggerID * imageWidth;$(".num-div a").removeClass('active');$active.addClass('active');$(".box-pic").animate({left: -image_reelPosition},500);};rotateSwitch = function(){play = setInterval(function(){$active = $('.num-div a.active').next();if ( $active.length === 0){$active = $('.num-div a:first');}rotate();},5000);};rotateSwitch();$(".box-pic a").hover(function(){clearInterval(play);},function(){rotateSwitch();});$(".num-div a").click(function(){	$active = $(this);clearInterval(play);rotate();rotateSwitch();return false;});});
 </script>
 <div class="box index-pic">
-	<div class="window">
-        <div class="box-pic">
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-            <a href="#"><img src="images/pic-index1.jpg"/></a>
-        </div>
-    </div>
-    <div class="num-div">
-    	<a href="#"rel="1"></a>
-        <a href="#"rel="2"></a>
-        <a href="#"rel="3"></a>
-        <a href="#"rel="4"></a>
-        <a href="#"rel="5"></a>
-        <a href="#"rel="6"></a>
-        <a href="#"rel="7"></a>
-        <a href="#"rel="8"></a>
-        <a href="#"rel="9"></a>
-        <a href="#"rel="10"></a> 
-    </div>
+	<#if bigPic?exists>
+		${bigPic.CONTENT!}
+	</#if> 
 </div>
 <!-- index-pic over -->
 <script>

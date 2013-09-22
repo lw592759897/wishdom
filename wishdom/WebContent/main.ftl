@@ -11,70 +11,19 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
 </script>
 <h3 class="title-master"></h3>
 <div class="box">
-    <ul class="list-master clearfix">
-        <li>
-            <a href="#"><img src="images/pic01.jpg" width="240" height="290"/></a>
-            <h4><a href="#">中国工艺美术大师</a></h4>
-            <h5><a href="#">米振雄</a></h5>
-        </li>
-        <li>
-            <a href="#"><img src="images/pic01.jpg" width="240" height="290"/></a>
-            <h4><a href="#">中国工艺美术大师</a></h4>
-            <h5><a href="#">米振雄</a></h5>
-        </li>
-        <li>
-            <a href="#"><img src="images/pic01.jpg" width="240" height="290"/></a>
-            <h4><a href="#">中国工艺美术大师</a></h4>
-            <h5><a href="#">米振雄</a></h5>
-        </li>
-        <li>
-            <a href="#"><img src="images/pic01.jpg" width="240" height="290"/></a>
-            <h4><a href="#">中国工艺美术大师</a></h4>
-            <h5><a href="#">米振雄</a></h5>
-        </li>
-        <li>
-            <a href="#"><img src="images/pic01.jpg" width="240" height="290"/></a>
-            <h4><a href="#">中国工艺美术大师</a></h4>
-            <h5><a href="#">米振雄</a></h5>
-        </li>
-    </ul>
+   <#if mainDs?exists>
+   		${mainDs.CONTENT!}
+   </#if>
 </div>
 <!--master over -->
 
 <div class="about-master">
 	<div class="box">
     	<h3 class="h3-about-master" title="关于国匠"></h3>
-        <div class="box-list-about">
-            <ul class="list-about-masrter clearfix">
-                <li>
-                    <a href="#" class="a-img-master"></a>
-                    <h5>
-                        <a href="#">标题标题标题标题</a>
-                        <span>2013-01-01</span>
-                    </h5>
-                    <p>关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠<a href="#" class="more">More</a></p>
-                    <h4><img src="images/pic-about1.png"/></h4>
-                </li>
-                <li>
-                    <a href="#" class="a-img-master"></a>
-                    <h5>
-                        <a href="#">标题标题标题标题</a>
-                        <span>2013-01-01</span>
-                    </h5>
-                    <p>关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠<a href="#" class="more">More</a></p>
-                    <h4><img src="images/pic-about2.png"/></h4>
-                </li>
-                <li>
-                    <a href="#" class="a-img-master"></a>
-                    <h5>
-                        <a href="#">标题标题标题标题</a>
-                        <span>2013-01-01</span>
-                    </h5>
-                    <p>关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠关于国匠<a href="#" class="more">More</a></p>
-                    <h4><img src="images/pic-about3.png"/></h4>
-                </li>
-            </ul>
-        </div>
+    	<#if guanyu?exists>
+    		${guanyu.CONTENT!}
+    	</#if>
+   
     </div>
 </div>
 <!-- about-master over -->
@@ -83,16 +32,16 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
 <div class="box box-hidden">
 	<div class="box-customize clearfix">
     	<div class="pic-customize">
-        	<a href="#"><img src="images/img-customize1.png"/></a>
-            <h4><a href="#" title="贵金属"><img src="images/title-customize1.png"/></a></h4>
+        	<a href="${contextPath!}/productdz.htm"><img src="images/img-customize1.png"/></a>
+            <h4><a href="${contextPath!}/productdz.htm" title="贵金属"><img src="images/title-customize1.png"/></a></h4>
         </div>
         <div class="pic-customize">
-        	<a href="#"><img src="images/img-customize2.png"/></a>
-            <h4><a href="#" title="钟表"><img src="images/title-customize2.png"/></a></h4>
+        	<a href="${contextPath!}/productdz.htm"><img src="images/img-customize2.png"/></a>
+            <h4><a href="${contextPath!}/productdz.htm" title="钟表"><img src="images/title-customize2.png"/></a></h4>
         </div>
         <div class="pic-customize">
-        	<a href="#"><img src="images/img-customize3.png"/></a>
-            <h4><a href="#" title="景泰蓝"><img src="images/title-customize3.png"/></a></h4>
+        	<a href="${contextPath!}/productdz.htm"><img src="images/img-customize3.png"/></a>
+            <h4><a href="${contextPath!}/productdz.htm" title="景泰蓝"><img src="images/title-customize3.png"/></a></h4>
         </div>
     </div>
 </div>
@@ -122,14 +71,11 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
 	<h3 class="h3-news">国匠最新动态</h3>
     <div class="box-news-list">
     	<ul class="list-news">
-        	<li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
-            <li><span>(2013-01-01)</span><a href="#">动态内容动态内容动态内容动态内容</a></li>
+    	<#if newsList?exists>
+    	<#list newsList as news>
+        	<li><span>(${news.NEWSDATE!})</span><a href="#">${news.CONTENT!}</a></li>
+         </#list>
+         </#if>
         </ul>
     </div>
     <div class="news-change">

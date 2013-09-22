@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>智慧金</title>
-<link href="style/style.css" rel="stylesheet"/>
+<#assign contextPath = request.contextPath />
+<link href="style/style.css" rel="stylesheet"/> 
 </head>
 <script>
 window.onload=function(){
@@ -11,7 +12,6 @@ window.onload=function(){
 	$('about').onmouseover=function(){$('div-a-about').style.display='block';};$('about').onmouseout=function(){$('div-a-about').style.display='none';};$('art').onmouseover=function(){$('div-a-art').style.display='block';};$('art').onmouseout=function(){$('div-a-art').style.display='none';};
 };
 </script>
-<#assign contextPath = request.contextPath />
 <div class="index-top other-top">
 	<div class="box">
 		<h1 class="logo"></h1>
