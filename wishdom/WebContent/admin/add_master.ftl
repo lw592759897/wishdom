@@ -61,7 +61,7 @@
 	function submit(){
 		hascontent = UE.getEditor('editor').hasContents();
 		if(hascontent==true){
-			content = UE.getEditor('editor').getContent();
+			content = UE.getEditor('editor').getContent().replace(/<p>/g,'').replace(/<\/p>/g,'');
 			$.post('${contextPath}/admin/update_master.htm',{content:content},function(data){if(data=='success'){alert("保存成功");}else{alert("保存失败");}});
 			return;
 		}else{
