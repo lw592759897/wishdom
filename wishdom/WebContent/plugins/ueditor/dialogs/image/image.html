@@ -23,14 +23,14 @@
                             <td class="label"><label for="url"><var id="lang_input_url"></var></label></td>
                             <td><input id="url" type="text"/></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td class="label"><label for="width"><var id="lang_input_width"></var></label></td>
                             <td><input type="text" id="width"/> px</td>
                         </tr>
                         <tr>
                             <td class="label"><label for="height"><var id="lang_input_height"></var></label></td>
                             <td><input type="text" id="height"/> px</td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td class="label"><label for="border"><var id="lang_input_border"></var></label></td>
                             <td><input type="text" id="border"/> px</td>
@@ -100,7 +100,7 @@
         editor.setOpt({
             imageFieldName:"upfile",
             compressSide:0,
-            maxImageSideLength:900
+            maxImageSideLength:15000
         });
         utils.domReady(function(){
             var flashOptions = {
