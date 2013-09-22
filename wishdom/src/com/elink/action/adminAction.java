@@ -788,11 +788,11 @@ public class adminAction extends ActionSupport{
 			if(news!=null && news.size() > 0){
 				int perid = -1;
 				if(news.get(0).get("PERNEWSID")!=null){
-					perid = (int)news.get(0).get("PERNEWSID");
+					perid = (Integer)news.get(0).get("PERNEWSID");
 				}
 				int nextid = -1;
 				if(news.get(0).get("NEXTNEWSID")!=null){
-					nextid = (int)news.get(0).get("NEXTNEWSID");
+					nextid = (Integer)news.get(0).get("NEXTNEWSID");
 				}
 				List<Map<String, Object>> pernews = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{perid});
 				if(pernews!=null && pernews.size() > 0){
