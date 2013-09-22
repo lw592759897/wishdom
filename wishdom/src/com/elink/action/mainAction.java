@@ -29,7 +29,6 @@ public class mainAction extends ActionSupport{
 	public String indexAction(){
 		try{
 			Map bigPic=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='Homebigpicture' AND CONTENTTYPE='HOMEBIGPICTURECONTENT' AND CONTENTOPT='USED'");
-			System.out.println("bigPic:"+bigPic);
 			ServletActionContext.getContext().put("bigPic", bigPic);
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -37,7 +36,6 @@ public class mainAction extends ActionSupport{
 		}
 		try{
 			Map mainDs=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='Maindspic' AND CONTENTTYPE='MAINDSPICCONTENT' AND CONTENTOPT='USED'");
-			System.out.println("mainDs:"+mainDs);
 			ServletActionContext.getContext().put("mainDs", mainDs);
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -45,7 +43,6 @@ public class mainAction extends ActionSupport{
 			}
 			try{
 			Map guanyu=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MaingjContent' AND CONTENTTYPE='MAINGJCONTENT' AND CONTENTOPT='USED'");
-				System.out.println("guanyu:"+guanyu);
 				ServletActionContext.getContext().put("guanyu", guanyu);
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -103,7 +100,6 @@ public class mainAction extends ActionSupport{
 		if(currPage!=null&&!"".endsWith(currPage)){
 			currIndex=Integer.parseInt(currPage);
 		}
-		System.out.println("currIndex:"+currIndex);
 		try{
 			String sql1="SELECT COUNT(*) FROM product WHERE PRODUCTCATALOG='"+catalogId+"'";
 			int totlePages=jdbctemplate.queryForInt(sql1);
@@ -111,12 +107,8 @@ public class mainAction extends ActionSupport{
 				totlePage = (totlePages  +  pageIndex  - 1) / pageIndex; 
 			}
 			String sql="SELECT * FROM product WHERE PRODUCTCATALOG='"+catalogId+"' limit "+ (currIndex-1)*pageIndex+","+pageIndex;
-			System.out.println(sql);
 			List productList=jdbctemplate.queryForList(sql);
 		
-			System.out.println("productList"+" "+productList);
-			System.out.println(currIndex+" "+totlePage);
-			System.out.println("tootle"+" "+productList.size());
 			ServletActionContext.getContext().put("catalogId", catalogId);
 			ServletActionContext.getContext().put("currIndex", currIndex);
 			ServletActionContext.getContext().put("totlePage", totlePage);
@@ -128,10 +120,8 @@ public class mainAction extends ActionSupport{
 		return "success";
 	}
 	public String chzDashi(){
-		System.out.println("start..........");
 		try{
 			Map master=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MasterContent' AND CONTENTTYPE='MASTERCONTENT' AND CONTENTOPT='USED'");
-			System.out.println(master);
 			if(master!=null&&master.size()>0){
 				ServletActionContext.getContext().put("master", master);
 			}
@@ -141,11 +131,9 @@ public class mainAction extends ActionSupport{
 		return "success";
 	}
 	public String custMode(){
-		System.out.println("start..........");
 		return "success";
 	}
 	public String zzgy(){
-		System.out.println("start..........");
 		return "success";
 	}
 	public String gjwh(){
@@ -177,8 +165,6 @@ public class mainAction extends ActionSupport{
 				producttl.put("productImg", productImg);
 				producttl.put("productDetail", productDetail);
 				producttl.put("newsList", newsList);
-				System.out.println(productDetail );
-				System.out.println(productImg );
 				ServletActionContext.getContext().put("producttl",producttl);
 			}catch (Exception e) {
 				// TODO: handle exception
