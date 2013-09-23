@@ -819,7 +819,7 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_makepage(){
-		List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT MAKEPRODUCTID, MAKEPRODUCTSEQ, MAKEPRODUCTDES FROM make_product");
+		List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT MAKEPRODUCTID, MAKEPRODUCTSEQ, MAKEPRODUCTCATALOG, MAKEPRODUCTDES FROM make_product");
 		if(makelist!=null && makelist.size()>0){
 			ServletActionContext.getContext().put("makelist", Data2Json.data2json(makelist));
 		}else{
@@ -850,18 +850,19 @@ public class adminAction extends ActionSupport{
 		
 		String makeproductId = request.getParameter("makeproductid");
 		String makeProductdes = request.getParameter("makeProductdes");
-		String makeProductseq = request.getParameter("makeProductseq");
+		String makeproductcatalog = request.getParameter("makeproductcatalog");
+		
 		String content = request.getParameter("content");
 		String makeproductinnerimg = request.getParameter("makeproductinnerimg");
 		String makeproductimgurl = request.getParameter("makeproductimgurl");
 		if(StringUtils.isNotEmpty(makeproductId)){
 			List<Map<String, Object>> makes = jdbctemplate.queryForList("SELECT * FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeproductId});
 			if(makes!= null && makes.size() > 0){
-				jdbctemplate.update("UPDATE make_product SET MAKEPRODUCTSEQ=?,MAKEPRODUCTDES=?,MAKEPRODUCTIMGURL=?,MAKEPRODUCTINNERIMG=?,MAKEPRODUCTINNERCONTENT=? WHERE MAKEPRODUCTID=?", new Object[]{makeProductseq,makeProductdes,makeproductimgurl,makeproductinnerimg,content,makeproductId});
+				jdbctemplate.update("UPDATE make_product SET MAKEPRODUCTCATALOG=?,MAKEPRODUCTDES=?,MAKEPRODUCTIMGURL=?,MAKEPRODUCTINNERIMG=?,MAKEPRODUCTINNERCONTENT=? WHERE MAKEPRODUCTID=?", new Object[]{makeproductcatalog,makeProductdes,makeproductimgurl,makeproductinnerimg,content,makeproductId});
 				result = "success";
 			}
 		}else{
-			jdbctemplate.update("INSERT INTO make_product(MAKEPRODUCTSEQ,MAKEPRODUCTDES,MAKEPRODUCTIMGURL,MAKEPRODUCTINNERIMG,MAKEPRODUCTINNERCONTENT) VALUES(?,?,?,?,?)", new Object[]{makeProductseq,makeProductdes,makeproductimgurl,makeproductinnerimg,content});
+			jdbctemplate.update("INSERT INTO make_product(MAKEPRODUCTCATALOG,MAKEPRODUCTDES,MAKEPRODUCTIMGURL,MAKEPRODUCTINNERIMG,MAKEPRODUCTINNERCONTENT) VALUES(?,?,?,?,?)", new Object[]{makeproductcatalog,makeProductdes,makeproductimgurl,makeproductinnerimg,content});
 			result = "success";
 		}
 		try {

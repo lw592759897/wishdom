@@ -1,6 +1,5 @@
 package com.elink.common;
 
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
@@ -30,8 +29,5 @@ public class dbConUtil {
 			init();
 		}
 		return jdbc;
-	}
-	public static UserLogin getUser(HttpSession session){
-		return (UserLogin)session.getAttribute("userLogin");
 	}
 }
