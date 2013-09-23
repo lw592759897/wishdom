@@ -1,0 +1,21 @@
+/* CSS Document */
+*{ margin:0px; padding:0px;}
+body{ background:#e6e6e6}
+.box{ width:100%; height:665px; background:#000; float:left}
+#box1{ width:900px;; margin:80px auto 0px; background:url(../images/beijing.jpg) no-repeat; height:583px;}
+	.middle{ width:521px; height:328px; margin-left:197px; margin-top:70px; background:url(../images/dneglukuagnbeijing.png) no-repeat; float:left;display:inline}
+		.name{ margin-top:102px; margin-left:110px;width:328px; height:24px;}
+			.namezt{ font-size:16px; font-family:"Î¢ÈíÑÅºÚ"; color:#454545; line-height:24px; float:left}
+			.wenbenkuang{ width:202px; height:24px;float:left; background:url(../images/mingzi.png); border:none; text-indent:20px;}
+		.mima{margin-top:25px; margin-left:110px;width:328px; height:24px;}
+			.wenbenkuang1{ width:202px; height:24px;float:left; text-indent:20px; border:none; background:url(../images/mima.png)}
+		.anniu{ width:162px; height:39px; margin:25px auto 0px}
+			.anniu input{ width:75px; height:28px;}
+				.anniu1{ background:url(../images/dengluanniu.jpg) no-repeat; border:none}
+				.anniu2{ background:url(../images/quxiao.png) no-repeat; border:none}
+	.middle1{ width:518px; height:33px;  margin-left:197px; background:url(../images/daoying.png); float:left; display:inline}
+#footer{ width:900px; height:29px;margin:0px auto;}
+	#footer p{ float:left; font-size:12px; line-height:29px; font-family:"Î¢ÈíÑÅºÚ"}
+	.dbz1{ padding-left:12px;}
+		.ys{ color:#555555}
+	.dbz2{ padding-left:309px}
