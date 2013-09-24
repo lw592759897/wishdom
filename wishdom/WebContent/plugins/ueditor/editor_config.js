@@ -161,7 +161,7 @@
 
         //图片在线管理配置区
         ,imageManagerUrl:URL + "jsp/imageManager.jsp"       //图片在线管理的处理地址
-        ,imageManagerPath:"http://localhost:8080/wishdom"                                    //图片修正地址，同imagePath
+        ,imageManagerPath:getRootPath()                                    //图片修正地址，同imagePath
 
         //屏幕截图配置区
         ,snapscreenHost: location.hostname                                 //屏幕截图的server端文件所在的网站地址或者ip，请不要加http://
@@ -478,3 +478,13 @@
         //filterRules : {}
     };
 })();
+
+function getRootPath(){
+    var curWwwPath=window.document.location.href;
+    var pathName=window.document.location.pathname;
+    var pos=curWwwPath.indexOf(pathName);
+    var localhostPaht=curWwwPath.substring(0,pos);
+//    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+    return(localhostPaht);
+//    return(localhostPaht+projectName);
+}

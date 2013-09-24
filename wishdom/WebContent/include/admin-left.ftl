@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <#assign contextPath = request.contextPath />
 <head>
-    <title></title>
+    <title>智慧金后台管理系统</title>
     <link href="${contextPath!}/plugins/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
     <script src="${contextPath!}/plugins/lib/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script src="${contextPath!}/plugins/lib/ligerUI/js/core/base.js" type="text/javascript"></script>
@@ -93,6 +93,11 @@
             width: 22px;
             height: 22px;
         }
+        .da{
+        	color:#FF0;
+        	text-decoration: none;
+        	text-decoration: none;
+        }
     </style>
 </head>
 <body style="overflow: hidden; background: url(images/applebg.jpg) no-repeat  center center;">
@@ -101,12 +106,14 @@
         </ul>
     </div>
 	<span style="float:right"><#assign user = UserLogin.getUserName() >
-		<b style="font-size:16px">${user!}
-		<a href="${contextPath!}/admin/logout.htm">注销</a></b>
+		<span style="font-size:16px;color:white">欢迎,&nbsp;&nbsp;<#if user?has_content><font color="#dfd">管理员</font></#if>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="${contextPath!}/admin/logout.htm" class="da">注销</a>
+		&nbsp;&nbsp;|&nbsp;&nbsp;<font size="2px" color="white">当前时间: &nbsp;&nbsp; <span id="jnkc"></span></font></span>
 	</span>
 	<div style="clear:both"></div>
 </body>
 <script type="text/javascript">
+	jnkc.innerHTML=new Date().toLocaleString();
+	setInterval("jnkc.innerHTML=new Date().toLocaleString();",1000);
     var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
     var winlinksul =  $("#winlinks ul");
     function f_open(url, title, icon) {

@@ -4,7 +4,13 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.action.extension" value="action,htm,," /> 
-<package name="index" namespace="/" extends="struts-default">
+	<package name="" namespace="" extends="struts-default" abstract="true">
+		<default-action-ref name="notFound" />
+		<action name="notFound">
+			<result>/error/404.html</result>
+		</action>
+	</package>
+	<package name="index" namespace="/" extends="struts-default">
 		<action name="index" class="com.elink.action.mainAction" method="indexAction">
 			<result name="success" type="freemarker">/main.ftl</result>
 		</action>
