@@ -62,7 +62,7 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
     	<ul class="list-news">
     	<#if newsList?exists>
     	<#list newsList as news>
-        	<li><span>(${news.NEWSDATE!})</span><a href="#">${news.CONTENT!}</a></li>
+        	<li><span>(${news.NEWSDATE!})</span><a href="#">${news.NEWSTITLE!}</a></li>
          </#list>
          </#if>
         </ul>
