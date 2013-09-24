@@ -24,7 +24,7 @@ public class mainAction extends ActionSupport{
 	private ActionContext context=ServletActionContext.getContext();
 	private int currIndex=1;
 	private int totlePage=1;
-	private int pageIndex=10;
+	private int pageIndex=12;
 	
 	public String indexAction(){
 		try{
@@ -44,6 +44,13 @@ public class mainAction extends ActionSupport{
 			try{
 			Map guanyu=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MaingjContent' AND CONTENTTYPE='MAINGJCONTENT' AND CONTENTOPT='USED'");
 				ServletActionContext.getContext().put("guanyu", guanyu);
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} 
+			try{
+				Map zzgy=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MainMakeContent' AND CONTENTTYPE='MAINMAKECONTENT' AND CONTENTOPT='USED'");
+				ServletActionContext.getContext().put("zzgy", zzgy);
 			}catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -134,6 +141,36 @@ public class mainAction extends ActionSupport{
 		return "success";
 	}
 	public String zzgy(){
+		String gyId=request.getParameter("gyId");
+		String currPage=request.getParameter("currPage");
+		if(currPage!=null&&!"".endsWith(currPage)){
+			currIndex=Integer.parseInt(currPage);
+		}
+		try{
+			String sql1=null;
+			String sql=null;
+			if(gyId==null||gyId.equals("")){
+				 sql1="SELECT COUNT(*) FROM make_product";
+				 sql="SELECT * FROM make_product  limit "+ (currIndex-1)*pageIndex+","+pageIndex;
+			}else{
+			 sql1="SELECT COUNT(*) FROM make_product WHERE MAKEPRODUCTCATALOG='"+gyId+"'";
+			 sql="SELECT * FROM make_product WHERE MAKEPRODUCTCATALOG='"+gyId+"' limit "+ (currIndex-1)*pageIndex+","+pageIndex;
+			}
+			int totlePages=jdbctemplate.queryForInt(sql1);
+			if(totlePages>0){
+				totlePage = (totlePages  +  pageIndex  - 1) / pageIndex; 
+			}
+			List mkproductList=jdbctemplate.queryForList(sql);
+			System.out.println(gyId+" "+sql1+" "+sql);
+			ServletActionContext.getContext().put("catalogId", gyId);
+			ServletActionContext.getContext().put("currIndex", currIndex);
+			ServletActionContext.getContext().put("totlePage", totlePage);
+			ServletActionContext.getContext().put("mkproductList", mkproductList);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+		
 		return "success";
 	}
 	public String gjwh(){

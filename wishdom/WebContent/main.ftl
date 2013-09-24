@@ -48,20 +48,9 @@ function startMoveScroll(iTarget){clearInterval(timer);timer = setInterval(funct
 <!-- customize over -->
 <div class="box-carft">
 	<h3 class="title-carft"></h3>
-    <ul class="list-carft clearfix">
-        <li><a href="#"><img src="images/img-carft1.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft2.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft3.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft4.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft5.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft6.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft7.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft8.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft9.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft10.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft11.png"/></a></li>
-        <li><a href="#"><img src="images/img-carft12.png"/></a></li>
-    </ul>
+   <#if zzgy?exists>
+   ${zzgy.CONTENT!}
+   </#if>
 </div>
 <!-- carft over -->
 <script type="text/javascript">

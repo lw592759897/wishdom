@@ -66,7 +66,7 @@
     				</#if>
     			</#if>
     	</#if>
-    	</#if> s
+    	</#if> 
 		</div> 
     
     <div class="box clearfix">
