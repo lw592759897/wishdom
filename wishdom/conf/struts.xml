@@ -42,14 +42,15 @@
 	<package name="admin" namespace="/admin" extends="struts-default">
 		<action name="index" class="com.elink.action.adminAction" method="loginAction">
 			<result name="success" type="freemarker">/include/admin-left.ftl</result>
+			<result name="perssion" type="redirect">/admin/login.htm</result>
 		</action>
 		<action name="list_*" class="com.elink.action.adminAction" method="list_{1}">
 			<result name="success" type="freemarker">/admin/list_{1}.ftl</result>
-			<result name="perssion" type="freemarker"></result>
+			<result name="perssion" type="redirect">/admin/login.htm</result>
 		</action>
 		<action name="add_*" class="com.elink.action.adminAction" method="add_{1}">
 			<result name="success" type="freemarker">/admin/add_{1}.ftl</result>
-			<result name="perssion" type="freemarker"></result>
+			<result name="perssion" type="redirect">/admin/login.htm</result>
 		</action>
 		<action name="del_*" class="com.elink.action.adminAction" method="del_{1}">
 		</action>
@@ -58,7 +59,14 @@
 		<action name="upload_*" class="com.elink.action.adminAction" method="upload_{1}">
 			<interceptor-ref name="fileUploadStack"/>
 		</action>
-		<action name="login" class="com.elink.action.adminAction" method="login">
+		<action name="login" class="com.elink.action.adminAction" method="loginhtml">
+			<result name="success" type="redirect">index.htm</result>
+			<result name="perssion" type="freemarker">/admin/login.ftl</result>
+		</action>
+		<action name="logout" class="com.elink.action.adminAction" method="logout">
+			<result name="success" type="redirect">login.htm</result>
+		</action>
+		<action name="login2cms" class="com.elink.action.adminAction" method="login">
 			<result name="success" type="redirect">index.htm</result>
 			<result name="error" type="freemarker">/admin/login.ftl</result>
 		</action>

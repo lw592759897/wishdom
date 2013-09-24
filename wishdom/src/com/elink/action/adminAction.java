@@ -19,6 +19,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.elink.common.CryptUtils;
 import com.elink.common.Data2Json;
 import com.elink.common.UserLogin;
 import com.elink.common.dbConUtil;
@@ -52,11 +53,19 @@ public class adminAction extends ActionSupport{
 	}
 
 	public String loginAction(){
-		
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
+		ServletActionContext.getContext().put("UserLogin", ul);
 		return "success";
 	}
 	
 	public String list_product(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> productlist = jdbctemplate.queryForList("SELECT PRODUCTID, PRODUCTNAME, PRODUCTCATALOG, PRODUCTSHOW, PRODUCTSHOWHEAD FROM product");
 		if(productlist!=null && productlist.size()>0){
 			ServletActionContext.getContext().put("products", Data2Json.data2json(productlist));
@@ -67,6 +76,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_product(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		String productId = request.getParameter("productId");
 		if(StringUtils.isNotEmpty(productId)){
 			List<Map<String, Object>> product = null;
@@ -79,6 +92,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_productcontent(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		String productId = request.getParameter("productId");
 		if(StringUtils.isNotEmpty(productId)){
 			List<Map<String, Object>> product = null;
@@ -138,6 +155,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_productdescontent(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		String productId = request.getParameter("productId");
 		if(StringUtils.isNotEmpty(productId)){
 			List<Map<String, Object>> product = null;
@@ -268,6 +289,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_commission(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> commission = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"CommissionContent", "COMMISSIONCONTENT", "USED"});
 		if(commission!= null && commission.size() > 0){
 			ServletActionContext.getContext().put("commission", commission.get(0));
@@ -315,6 +340,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_company(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> company = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Company", "COMPANYCONTENT", "USED"});
 		if(company!= null && company.size() > 0){
 			ServletActionContext.getContext().put("company", company.get(0));
@@ -362,6 +391,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_cultural(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> cultural = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Cultural", "CULTURALCONTENT", "USED"});
 		if(cultural!= null && cultural.size() > 0){
 			ServletActionContext.getContext().put("cultural", cultural.get(0));
@@ -409,6 +442,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_homebigpicture(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> homebigpicture = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Homebigpicture", "HOMEBIGPICTURECONTENT", "USED"});
 		if(homebigpicture!= null && homebigpicture.size() > 0){
 			ServletActionContext.getContext().put("homebigpicture", homebigpicture.get(0));
@@ -456,6 +493,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_maindspic(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> maindspic = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"Maindspic", "MAINDSPICCONTENT", "USED"});
 		if(maindspic!= null && maindspic.size() > 0){
 			ServletActionContext.getContext().put("maindspic", maindspic.get(0));
@@ -503,6 +544,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_maingj() {
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> maingjcontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MaingjContent", "MAINGJCONTENT", "USED"});
 		if(maingjcontent!= null && maingjcontent.size() > 0){
 			ServletActionContext.getContext().put("maingjcontent", maingjcontent.get(0));
@@ -550,6 +595,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_master() {
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> mastercontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MasterContent", "MASTERCONTENT", "USED"});
 		if(mastercontent!= null && mastercontent.size() > 0){
 			ServletActionContext.getContext().put("mastercontent", mastercontent.get(0));
@@ -597,6 +646,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_mainmake() {
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> mainmakecontent = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MainMakeContent", "MAINMAKECONTENT", "USED"});
 		if(mainmakecontent!= null && mainmakecontent.size() > 0){
 			ServletActionContext.getContext().put("mainmakecontent", mainmakecontent.get(0));
@@ -644,6 +697,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_mainyspdz() {
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> mainyspdz = jdbctemplate.queryForList("SELECT CONTENT FROM content WHERE CONTENTID = ? AND CONTENTTYPE = ? AND CONTENTOPT = ?", new Object[]{"MainYspdz", "MAINYSPDZCONTENT", "USED"});
 		if(mainyspdz!= null && mainyspdz.size() > 0){
 			ServletActionContext.getContext().put("mainyspcontent", mainyspdz.get(0));
@@ -691,6 +748,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_news(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		String newsId = request.getParameter("newsId");
 		if(StringUtils.isNotEmpty(newsId)){
 			List<Map<String, Object>> newslist = jdbctemplate.queryForList("SELECT * FROM news WHERE NEWSID = ?", new Object[]{newsId});
@@ -706,6 +767,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_news(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> newslist = jdbctemplate.queryForList("SELECT NEWSID, NEWSTITLE, NEWSKEYWORDS, NEWSSHOW, NEWSHEADSHOW FROM news");
 		if(newslist!=null && newslist.size()>0){
 			ServletActionContext.getContext().put("news", Data2Json.data2json(newslist));
@@ -819,6 +884,11 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_makepage(){
+		
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT MAKEPRODUCTID, MAKEPRODUCTSEQ, MAKEPRODUCTCATALOG, MAKEPRODUCTDES FROM make_product");
 		if(makelist!=null && makelist.size()>0){
 			ServletActionContext.getContext().put("makelist", Data2Json.data2json(makelist));
@@ -829,6 +899,10 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_makepage(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
 		String makeId = request.getParameter("makeId");
 		if(StringUtils.isNotEmpty(makeId)){
 			List<Map<String, Object>> makelist = jdbctemplate.queryForList("SELECT * FROM make_product WHERE MAKEPRODUCTID = ?", new Object[]{makeId});
@@ -956,24 +1030,46 @@ public class adminAction extends ActionSupport{
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMdd");
 		return formater.format(new Date());
 	}
+	
+	public String loginhtml(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul==null){
+			return "perssion";
+		}
+		return "success";
+	}
+	
+	public String logout(){
+		UserLogin ul = UserLogin.getUser(session);
+		if(ul!=null){
+			session.removeAttribute("userLogin");
+		}
+		return "success";
+	}
+	
 	public String login(){
 		Map<String, Object> userlogin=new HashMap<String, Object>();
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
-		String sql="SELECT * FROM userLogin WHERE USERLOGIN_NAME='"+userName+"' AND USERLOGIN_PASSWORD='"+password+"'";
-		try{
-			userlogin=jdbctemplate.queryForMap(sql);
-			if(userlogin!=null&&userlogin.size()>0){
-				UserLogin user=new UserLogin();
-				user.setUserLoginId((String)userlogin.get("USERLOGIN_ID"));
-				user.setUserName((String)userlogin.get("USERLOGIN_NAME"));
-				user.setUserTye((String)userlogin.get("USERLOGIN_TYPE"));
-				session.setAttribute("userLogin",user);
-				return "success";
-			} 
-			}catch (Exception e) {
-				// TODO: handle exception
+		if(StringUtils.isNotEmpty(userName)&&StringUtils.isNotEmpty(password)){
+			int us = jdbctemplate.queryForInt("SELECT COUNT(*) FROM userLogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
+			if(us > 0){
+//				String sql="SELECT * FROM userLogin WHERE USERLOGIN_NAME='"+userName+"' AND USERLOGIN_PASSWORD='"+password+"'";
+				userlogin=jdbctemplate.queryForMap("SELECT * FROM userLogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
+				if(userlogin!=null&&userlogin.size()>0){
+					String userpassword = ( String)userlogin.get("USERLOGIN_PASSWORD");
+					String enpass = CryptUtils.encrypt(password, "wishdomS");
+					if(enpass.equals(userpassword)){
+						UserLogin user=new UserLogin();
+						user.setUserLoginId((String)userlogin.get("USERLOGIN_ID"));
+						user.setUserName((String)userlogin.get("USERLOGIN_NAME"));
+						user.setUserTye((String)userlogin.get("USERLOGIN_TYPE"));
+						session.setAttribute("userLogin",user);
+						return "success";
+					}
+				} 
 			}
+		}
 		return "error";
 	}
 }

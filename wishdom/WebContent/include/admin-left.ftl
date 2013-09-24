@@ -100,6 +100,11 @@
         <ul>
         </ul>
     </div>
+	<span style="float:right"><#assign user = UserLogin.getUserName() >
+		<b style="font-size:16px">${user!}
+		<a href="${contextPath!}/admin/logout.htm">注销</a></b>
+	</span>
+	<div style="clear:both"></div>
 </body>
 <script type="text/javascript">
     var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
