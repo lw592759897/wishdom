@@ -4,8 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>智慧金</title>
 <#assign contextPath = request.contextPath />
+<script src="./script/jquery.min.js"></script>
 <link href="style/style.css" rel="stylesheet"/> 
 </head>
+<script type="text/javascript">
+$(document).ready(function() {$(".num-div").show();$(".num-div a:first").addClass("active");var imageWidth = $(".window").width();var imageSum = $(".box-pic img").size();var imageReelWidth = imageWidth * imageSum;$(".box-pic").css({'width' : imageReelWidth});rotate = function(){var triggerID = $active.attr("rel") - 1;var image_reelPosition = triggerID * imageWidth;$(".num-div a").removeClass('active');$active.addClass('active');$(".box-pic").animate({left: -image_reelPosition},500);};rotateSwitch = function(){play = setInterval(function(){$active = $('.num-div a.active').next();if ( $active.length === 0){$active = $('.num-div a:first');}rotate();},5000);};rotateSwitch();$(".box-pic a").hover(function(){clearInterval(play);},function(){rotateSwitch();});$(".num-div a").click(function(){	$active = $(this);clearInterval(play);rotate();rotateSwitch();return false;});});
+</script>
 <script>
 window.onload=function(){
 	function $(id){return document.getElementById(id);};

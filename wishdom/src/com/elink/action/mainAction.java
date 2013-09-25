@@ -32,28 +32,24 @@ public class mainAction extends ActionSupport{
 			ServletActionContext.getContext().put("bigPic", bigPic);
 		}catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		}
 		try{
 			Map mainDs=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='Maindspic' AND CONTENTTYPE='MAINDSPICCONTENT' AND CONTENTOPT='USED'");
 			ServletActionContext.getContext().put("mainDs", mainDs);
 			}catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
 			}
 			try{
 			Map guanyu=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MaingjContent' AND CONTENTTYPE='MAINGJCONTENT' AND CONTENTOPT='USED'");
 				ServletActionContext.getContext().put("guanyu", guanyu);
 			}catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
 			} 
 			try{
 				Map zzgy=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='MainMakeContent' AND CONTENTTYPE='MAINMAKECONTENT' AND CONTENTOPT='USED'");
 				ServletActionContext.getContext().put("zzgy", zzgy);
 			}catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
 			} 
 			List newsList=jdbctemplate.queryForList("SELECT *  from news  ORDER BY  NEWSDATE DESC  limit 0,4");
 			ServletActionContext.getContext().put("newsList", newsList);
@@ -122,7 +118,6 @@ public class mainAction extends ActionSupport{
 			ServletActionContext.getContext().put("productList", productList);
 		}catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		} 
 		return "success";
 	}
@@ -168,15 +163,17 @@ public class mainAction extends ActionSupport{
 			ServletActionContext.getContext().put("mkproductList", mkproductList);
 		}catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		} 
 		
 		return "success";
 	}
 	public String gjwh(){
+		try{
 		Map wenhua=jdbctemplate.queryForMap("SELECT * FROM content WHERE CONTENTID='Cultural' AND CONTENTTYPE='CulturalCONTENT' AND CONTENTOPT='USED'");
 			ServletActionContext.getContext().put("wenhua", wenhua);
-		
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return "success";
 	}
 	public String productdz(){
