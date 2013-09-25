@@ -28,9 +28,6 @@ import com.opensymphony.xwork2.ActionSupport;
 public class adminAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
-	HttpServletRequest request = ServletActionContext.getRequest();
-	HttpServletResponse response = ServletActionContext.getResponse();
-	HttpSession session=request.getSession();
 	private static JdbcTemplate jdbctemplate = dbConUtil.getCon();
 	
 	private File productimg;
@@ -53,6 +50,8 @@ public class adminAction extends ActionSupport{
 	}
 
 	public String loginAction(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -62,6 +61,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_product(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -76,6 +77,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_product(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -92,6 +95,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_productcontent(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -119,6 +124,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_productcontent(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -155,6 +162,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_productdescontent(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -182,6 +191,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_productdescontent(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -218,6 +229,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_product(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -262,6 +275,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String del_product(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -289,6 +304,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_commission(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -308,6 +325,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_commission(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -340,6 +359,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_company(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -359,6 +380,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_company(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -391,6 +414,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_cultural(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -410,6 +435,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_cultural(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -442,6 +469,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_homebigpicture(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -461,6 +490,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_homebigpicture(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -493,6 +524,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_maindspic(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -512,6 +545,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_maindspic(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -544,6 +579,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_maingj() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -563,6 +600,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_maingj(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -595,6 +634,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_master() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -614,6 +655,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_master(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -646,6 +689,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_mainmake() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -665,6 +710,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_mainmake(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -697,6 +744,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_mainyspdz() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -716,6 +765,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_mainyspdz(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -748,6 +799,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_news(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -767,6 +820,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_news(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -781,6 +836,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_news(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -839,6 +896,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String del_news(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -884,7 +943,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String list_makepage(){
-		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -899,6 +959,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String add_makepage(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -914,6 +976,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String update_makepage(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -950,6 +1014,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String del_makepage(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		String result = "error";
 		try {
@@ -978,6 +1044,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String upload_propic(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -1032,6 +1100,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String loginhtml(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul==null){
 			return "perssion";
@@ -1040,6 +1110,8 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String logout(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		UserLogin ul = UserLogin.getUser(session);
 		if(ul!=null){
 			session.removeAttribute("userLogin");
@@ -1048,14 +1120,16 @@ public class adminAction extends ActionSupport{
 	}
 	
 	public String login(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		Map<String, Object> userlogin=new HashMap<String, Object>();
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
 		if(StringUtils.isNotEmpty(userName)&&StringUtils.isNotEmpty(password)){
-			int us = jdbctemplate.queryForInt("SELECT COUNT(*) FROM userLogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
+			int us = jdbctemplate.queryForInt("SELECT COUNT(*) FROM userlogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
 			if(us > 0){
 //				String sql="SELECT * FROM userLogin WHERE USERLOGIN_NAME='"+userName+"' AND USERLOGIN_PASSWORD='"+password+"'";
-				userlogin=jdbctemplate.queryForMap("SELECT * FROM userLogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
+				userlogin=jdbctemplate.queryForMap("SELECT * FROM userlogin WHERE USERLOGIN_NAME=?", new Object[]{userName});
 				if(userlogin!=null&&userlogin.size()>0){
 					String userpassword = ( String)userlogin.get("USERLOGIN_PASSWORD");
 					String enpass = CryptUtils.encrypt(password, "wishdomS");

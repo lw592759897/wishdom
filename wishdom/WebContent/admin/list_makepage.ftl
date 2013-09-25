@@ -46,7 +46,6 @@
             $("#maingrid").ligerGrid({
                 height:'450px',
                 columns: [
-	                { display: '工艺展示序号', name: 'MAKEPRODUCTSEQ', align: 'right', width: 100, minWidth: 60 },
 	                { display: '工艺展示分类', name: 'MAKEPRODUCTCATALOG', width: 100, minWidth: 60,render: function(item){
 	                									<#list makeCatalogType as makecatalog>
 	                										<#assign mk = makecatalog_index>
@@ -56,7 +55,7 @@
 	                									</#list>
 	                										return '未知分类';}
 	                									},
-	                { display: '工艺展示描述', name: 'MAKEPRODUCTDES', minWidth: 80 }
+	                { display: '工艺展示描述(内部维护)', name: 'MAKEPRODUCTDES', minWidth: 80 }
                 ], data: data, pageSize:20, rownumbers:true, isScroll: false,
                 toolbar:{ items: [
 		                	{ text: '增加', click: _add, icon: 'add'},
